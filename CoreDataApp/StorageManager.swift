@@ -48,9 +48,9 @@ class StorageManager {
     func delete(from index: IndexPath) {
         
         do {
-            let taskName = StorageManager.shared.tasks.remove(at: index.row)
+            let taskName = tasks.remove(at: index.row)
             persistentContainer.viewContext.delete(taskName as NSManagedObject)
-            try StorageManager.shared.persistentContainer.viewContext.save()
+            try persistentContainer.viewContext.save()
         } catch let error as NSError {
             print("error: \(error.localizedDescription)")
         }
